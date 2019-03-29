@@ -14,11 +14,11 @@
     for(let i = 19009; i> 0 ;i--){
       arr = [i].concat([arr]);
     }
+    //es6 flat()方法
     function flatten(arr){
-      //1ms
       return arr.flat(Infinity);
     }
-
+    //for循环 concat
     function flatten10 (arr) {
       let res =[];
       for(let i =0; i<arr.length;i++){
@@ -30,6 +30,7 @@
       }
       return res;
     }
+    //for循环 push
     function flatten11 (arr) {
       let res =[];
       for(let i =0; i<arr.length;i++){
@@ -41,27 +42,27 @@
       }
       return res;
     }
-
+    //while方法
     function flatten20(arr){
       while(arr.some(item => Array.isArray(item))){
         arr = [].concat(...arr)
       }
       return arr;
     }
-
+    //while方法 原型
     function flatten21(arr){
       while(arr.some(item => Array.isArray(item))){
         arr = Array.prototype.concat.apply([],arr)
       }
       return arr;
     }
-
+    //reduce方法
     function flatten31(arr){
       arr.reduce((res,next) =>{
         return res.concat(Array.isArray(next)?flatten31(next):next);
       },[])
     }
-
+    //stack 从前取值
     function flatten41(arr){
       let copy = [...arr];
       let res = [];
@@ -71,6 +72,7 @@
       }
       return res;
     }
+    //stack 从后取值
     function flatten42(arr){
       let copy = [...arr];
       let res = [];
@@ -80,7 +82,7 @@
       }
       return res.reverse();
     }
-
+    //全数字四种 扁平化方法
     function flatten51(arr){
       return arr.toString().split(',').map(i => +i);
     }
